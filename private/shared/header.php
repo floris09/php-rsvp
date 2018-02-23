@@ -28,6 +28,7 @@ for ($i=0; $i < count($guests); $i++) {
 <head>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href=<?= WWW_ROOT . '/styles/style.css' ?> />
   <title>Bali Eve RSVP</title>
 
 </head>
