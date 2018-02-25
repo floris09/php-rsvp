@@ -6,6 +6,14 @@
   define("SHARED_PATH", PRIVATE_PATH . '/shared');
   define("WWW_ROOT", '/RSVP/public');
 
+  session_start();
+
+
+  function logout(){
+    session_destroy();
+  }
+
+
   require_once('functions.php');
 
 ?>

@@ -3,8 +3,10 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_POST['username'] === 'lauravania' && $_POST['password'] === '123456') {
+      $_SESSION['user'] = 'lauravania';
       header('Location: ./admin/index.php');
     } elseif ($_POST['username'] === 'jane-john' && $_POST['password'] === 'balieveplanner') {
+      $_SESSION['user'] = 'jane-john';
       header('Location: ./guest/index.php');
     } else {
       $errorMessage = "Incorrect username and/or password. Please try again.";

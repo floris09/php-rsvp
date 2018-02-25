@@ -11,9 +11,10 @@ $errorMessage = '';
 
     <input type='text' id='adults' name='adults' placeholder='Full names of all the adult guests that will be attending...'>
 
-    
+
     <input type='text' id='children' name='children' placeholder='Full names of all the children that will be attending...'>
 
     <input type='submit' value='submit'>
+
   </form>
 </div>
