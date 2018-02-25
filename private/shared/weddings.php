@@ -3,19 +3,33 @@
 
   <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
 
+  <table style='width:100%'>
+      <tr>
+        <th style='border: 1px solid black'>Name</th>
+        <th style='border: 1px solid black'>Adults</th>
+        <th style='border: 1px solid black'>Children</th>
+        <th style='border: 1px solid black'>Total adults</th>
+        <th style='border: 1px solid black'>Total children</th>
+      </tr>
   <?php foreach ($guests as $guest): ?>
     <?php $adultsCount += $guest['total_adults'];
           $childrenCount += $guest['total_children']; ?>
-    <div class='guests-container'>
+
+
     <?php if($guest['wedding'] === $wedding['name']): ?>
-      <div class='guest'><?= $guest['name'] ?>   ||</div>
-      <div class='guest'><?= $guest['adults'] ?>   ||</div>
-      <div class='guest'><?= $guest['children'] ?>   ||</div>
-      <div class='guest'><?= $guest['total_adults'] ?> adults  ||</div>
-      <div class='guest'><?= $guest['total_children'] ?> children  </div><br>
+      <tr>
+        <td style='border: 1px solid black'><?= $guest['name'] ?></td>
+        <td style='border: 1px solid black'><?= $guest['adults'] ?></td>
+        <td style='border: 1px solid black'><?= $guest['children'] ?></td>
+        <td style='border: 1px solid black'><?= $guest['total_adults'] ?> adults</td>
+        <td style='border: 1px solid black'><?= $guest['total_children'] ?> children </td>
+      </tr>
     <?php endif ?>
-    </div>
+
   <?php endforeach ?>
+
+  </table>
+
 
   <h4>Total adults: <?= $adultsCount; ?></h4>
   <h4>Total children: <?= $childrenCount; ?></h4>

@@ -31,16 +31,10 @@ input[type=submit]{
   margin-top: 10%;
 }
 
-.guests-container {
-  width: 95%;
-  margin: auto;
+table, th, td {
   border: 1px solid black;
 }
 
-.guest {
-  display: inline-block;
-  height: auto;
-}
 
 #username {
   margin-top: 10%;
