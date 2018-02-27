@@ -1,37 +1,42 @@
-<?php foreach ($weddings as $wedding): ?>
-  <?php $adultsCount = 0; $childrenCount = 0; ?>
+<?php
 
-  <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
+  $weddings = find_all('weddings');
 
-  <table style='width:100%'>
+  while ($wedding = mysqli_fetch_assoc($weddings)):
+    $adultsCount = 0; $childrenCount = 0; ?>
+
+    <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
+
+    <table>
       <tr>
-        <th style='border: 1px solid black'>Name</th>
-        <th style='border: 1px solid black'>Adults</th>
-        <th style='border: 1px solid black'>Children</th>
-        <th style='border: 1px solid black'>Total adults</th>
-        <th style='border: 1px solid black'>Total children</th>
+        <th>Name</th>
+        <th>Attending</th>
+        <th>Adults</th>
+        <th>Children</th>
+        <th>Total Adults</th>
+        <th>Total Children</th>
       </tr>
-  <?php foreach ($guests as $guest): ?>
-    <?php $adultsCount += $guest['total_adults'];
-          $childrenCount += $guest['total_children']; ?>
 
+    <?php $guests= find_wedding_guests($wedding['id']);
 
-    <?php if($guest['wedding'] === $wedding['name']): ?>
+    while ($guest = mysqli_fetch_assoc($guests)): ?>
+
       <tr>
-        <td style='border: 1px solid black'><?= $guest['name'] ?></td>
-        <td style='border: 1px solid black'><?= $guest['adults'] ?></td>
-        <td style='border: 1px solid black'><?= $guest['children'] ?></td>
-        <td style='border: 1px solid black'><?= $guest['total_adults'] ?> adults</td>
-        <td style='border: 1px solid black'><?= $guest['total_children'] ?> children </td>
+        <td><?= $guest['name'] ?></td>
+        <td><?= $guest['attending'] ?></td>
+        <td><?= $guest['adults'] ?></td>
+        <td><?= $guest['children'] ?></td>
+        <td><?= $guest['adults_count'] ?></td>
+        <td><?= $guest['children_count'] ?></td>
       </tr>
-    <?php endif ?>
 
-  <?php endforeach ?>
+    <?php $adultsCount += $guest['adults_count'];
+          $childrenCount += $guest['children_count']; ?>
 
-  </table>
+    <?php endwhile ?>
 
+    </table>
 
-  <h4>Total adults: <?= $adultsCount; ?></h4>
-  <h4>Total children: <?= $childrenCount; ?></h4>
+    <p>Total Adults: <?= $adultsCount; ?>. Total Children: <?= $childrenCount; ?></p>
 
-<?php endforeach ?>
+  <?php endwhile ?>

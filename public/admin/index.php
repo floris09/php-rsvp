@@ -1,6 +1,8 @@
 <?php require_once('../../private/initialize.php');
 
-if ($_SESSION['user'] !== 'lauravania'){
+$user = $_SESSION['user'];
+
+if ($user['admin'] != 1){
   header('Location: ../index.php');
 }
 
@@ -19,3 +21,8 @@ if (isset($_GET['logout'])) {
 <?php include(SHARED_PATH . '/weddings.php'); ?>
 
 </body>
+</html>
+
+<?php
+  db_disconnect($db);
+?>

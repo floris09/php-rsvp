@@ -2,11 +2,18 @@
   $errorMessage = '';
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if ($_POST['username'] === 'lauravania' && $_POST['password'] === '123456') {
-      $_SESSION['user'] = 'lauravania';
+    $username = $_POST["username"];
+    $query = find_user($username);
+    $user = mysqli_fetch_assoc($query);
+    $hash = $user["password"];
+    $valid = password_verify($_POST["password"],$hash);
+    $admin = $user["admin"] == 1;
+
+    if ($valid && $admin) {
+      $_SESSION['user'] = $user;
       header('Location: ./admin/index.php');
-    } elseif ($_POST['username'] === 'jane-john' && $_POST['password'] === 'balieveplanner') {
-      $_SESSION['user'] = 'jane-john';
+    } elseif ($valid) {
+      $_SESSION['user'] = $user;
       header('Location: ./guest/index.php');
     } else {
       $errorMessage = "Incorrect username and/or password. Please try again.";

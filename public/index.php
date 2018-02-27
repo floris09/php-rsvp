@@ -7,3 +7,8 @@
 <?php include(SHARED_PATH . '/login.php'); ?>
 
 </body>
+</html>
+
+<?php
+  db_disconnect($db);
+?>

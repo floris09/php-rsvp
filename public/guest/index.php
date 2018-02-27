@@ -13,3 +13,8 @@ if (!isset($_SESSION['user'])){
 <?php include(SHARED_PATH . '/rsvpForm.php'); ?>
 
 </body>
+</html>
+
+<?php
+  db_disconnect($db);
+?>
