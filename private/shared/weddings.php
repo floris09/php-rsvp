@@ -9,6 +9,10 @@
 
     <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
 
+    <a href='create_user.php?wedding_id=<?= $wedding['id']?>'>
+      <button>Create User</button>
+    </a>
+
     <table>
       <tr>
         <th>Name</th>
@@ -25,7 +29,12 @@
 
       <tr>
         <td><?= $guest['name'] ?></td>
-        <td><?= $guest['attending'] ?></td>
+        <td><?php if($guest['attending']==0){
+                    echo 'No';
+                  } else {
+                    echo 'Yes';
+                  } ?>
+        </td>
         <td><?= $guest['adults'] ?></td>
         <td><?= $guest['children'] ?></td>
         <td><?= $guest['adults_count'] ?></td>
