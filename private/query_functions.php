@@ -5,6 +5,7 @@
 
     $sql = "SELECT * FROM $table";
     $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
     return $result;
   }
 
@@ -14,6 +15,7 @@
     $sql = "SELECT * FROM users ";
     $sql .= "WHERE username='$username'";
     $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
     return $result;
   }
 
@@ -23,5 +25,6 @@
     $sql = "SELECT * FROM guests ";
     $sql .= "WHERE wedding_id=$wedding_id";
     $result = mysqli_query($db, $sql);
+    confirm_result_set($result);
     return $result;
   }

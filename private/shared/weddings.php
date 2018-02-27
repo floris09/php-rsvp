@@ -5,6 +5,8 @@
   while ($wedding = mysqli_fetch_assoc($weddings)):
     $adultsCount = 0; $childrenCount = 0; ?>
 
+    <div class="whitespace"></div>
+
     <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
 
     <table>
@@ -37,6 +39,6 @@
 
     </table>
 
-    <p>Total Adults: <?= $adultsCount; ?>. Total Children: <?= $childrenCount; ?></p>
+    <p><strong>Total Adults:</strong> <?= $adultsCount; ?>. <strong>Total Children:</strong> <?= $childrenCount; ?></p>
 
   <?php endwhile ?>

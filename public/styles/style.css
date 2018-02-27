@@ -1,5 +1,6 @@
 * {
   margin: auto;
+  box-sizing: border-box;
 }
 
 body {
@@ -29,6 +30,10 @@ input[type=submit]{
 .logo {
   width: 70%;
   margin-top: 10%;
+}
+
+.whitespace {
+  height: 30px;
 }
 
 table, th, td {
