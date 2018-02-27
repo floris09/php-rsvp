@@ -12,6 +12,18 @@ $children = $_POST['children'] ?? null;
 $adults_array = explode(",", $adults);
 $children_array = explode(",", $children);
 
+for ($i=0; $i < count($adults_array); $i++) {
+  if(ctype_space($adults_array[$i]) || $adults_array[$i] == ''){
+    array_splice($adults_array,$i,1);
+  }
+}
+
+for ($i=0; $i < count($children_array); $i++) {
+  if(ctype_space($children_array[$i]) || $children_array[$i] == ''){
+    array_splice($children_array,$i,1);
+  }
+}
+
 $adults_count = count($adults_array);
 $children_count = count($children_array);
 
@@ -46,12 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p><?= $successMessage; ?></p>
   <form method='post' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-    <input type='text' id='name' name='name' placeholder='Name as written on invitation...'>
+    <input type='text' id='name' name='name' placeholder='Name as written on invitation...'><br>
 
-    <label for="attending">I'm attending the wedding</label>
-    <input type='hidden' name='attending' value=0>
-    <input type='checkbox' id='attending' name='attending' placeholder="I'm attending the wedding." value=1>
-    <label for="attending">I'm attending the wedding</label>
+    <div class="attending-container">
+      <label for="attending">I'm attending the wedding</label>
+      <input type='hidden' name='attending' value=0>
+      <input type='checkbox' id='attending' name='attending' value=1>
+    </div>
 
     <input type='text' id='adults' name='adults' placeholder='Full names of all the adult guests that will be attending...'>
 

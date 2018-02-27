@@ -32,12 +32,26 @@ input[type=submit]{
   margin-top: 10%;
 }
 
-.whitespace {
-  height: 30px;
+input[type=checkbox] {
+  margin-top: -50px;
+}
+
+.attending-container label {
+  position: relative;
+  right: 140px;
+  top: 5px;
+}
+
+.attending-container {
+  margin-top: 20px;
 }
 
 table, th, td {
   border: 1px solid black;
+}
+
+h2 {
+  margin-top: 20px;
 }
 
 
