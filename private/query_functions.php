@@ -74,3 +74,18 @@
     confirm_result_set($result);
     return $result;
   }
+
+  function delete_item($table, $id){
+    global $db;
+
+    $sql = "DELETE FROM $table WHERE id='$id'";
+
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+      echo "Successfully deleted.";
+    } else {
+      echo mysqli_error($db) . ". Please try again.";
+      db_disconnect($db);
+      exit;
+    }
+  }
