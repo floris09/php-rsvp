@@ -15,6 +15,7 @@
 ?>
 
     <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
+    <a href='delete_wedding.php?wedding_id=<?= $wedding['id'] ?>'><p>Delete Wedding</p></a>
 
     <a href='create_user.php?wedding_id=<?= $wedding['id']?>'>
       <button>Create User</button>

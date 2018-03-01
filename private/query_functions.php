@@ -89,3 +89,19 @@
       exit;
     }
   }
+
+  function delete_children($child_table, $foreign_key, $parent_table_id){
+    global $db;
+
+    $sql = "DELETE FROM $child_table ";
+    $sql .= "WHERE $foreign_key=$parent_table_id";
+
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+      echo "Successfully deleted children.";
+    } else {
+      echo mysqli_error($db) . ". Please try again.";
+      db_disconnect($db);
+      exit;
+    }
+  }
