@@ -2,10 +2,17 @@
 
   $weddings = find_all('weddings');
 
-  while ($wedding = mysqli_fetch_assoc($weddings)):
-    $adultsCount = 0; $childrenCount = 0; ?>
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $user_id = test_input($_POST['user_id']);
 
-    <div class="whitespace"></div>
+    delete_user($user_id);
+    header("Location: ./index.php ");
+  }
+
+  while ($wedding = mysqli_fetch_assoc($weddings)):
+    $adultsCount = 0; $childrenCount = 0;
+
+?>
 
     <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
 
@@ -13,6 +20,12 @@
       <button>Create User</button>
     </a>
 
+    <?php
+      $users = find_user_by_wedding_id($wedding['id']);
+      while ($user = mysqli_fetch_assoc($users)): ?>
+        <p>Username: <?= $user['username']; ?></p>
+        <a href="delete_user.php?user_id=<?= $user['id']; ?>"><p>Delete User</p></a>
+      <?php endwhile ?>
     <table>
       <tr>
         <th>Name</th>
