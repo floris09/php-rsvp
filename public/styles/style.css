@@ -22,6 +22,23 @@ input[type=submit]{
   background-color: white;
 }
 
+.inline-block {
+  display: inline;
+}
+
+.width30 {
+  width: 30%;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.width70 {
+  width: 70%;
+}
+
+
 .error {
   margin-top: 20px;
   width: 60%;
@@ -46,14 +63,26 @@ input[type=checkbox] {
   margin-top: 20px;
 }
 
-table, th, td {
-  border: 1px solid black;
-}
-
-h2 {
+.wedding-header {
   margin-top: 20px;
 }
 
+.wedding-header h2,
+.wedding-header p {
+  display: inline-block;
+}
+
+.user-container p {
+  display: inline-block;
+}
+
+button {
+  margin-top: 10px;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
 
 #username {
   margin-top: 10%;

@@ -14,8 +14,10 @@
 
 ?>
 
-    <h2><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
-    <a href='delete_wedding.php?wedding_id=<?= $wedding['id'] ?>'><p>Delete Wedding</p></a>
+  <div class="wedding-header">
+    <h2 class="width70"><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
+    <a class="width30" href='delete_wedding.php?wedding_id=<?= $wedding['id'] ?>'><p>Delete Wedding</p></a>
+  </div>
 
     <a href='create_user.php?wedding_id=<?= $wedding['id']?>'>
       <button>Create User</button>
@@ -24,8 +26,10 @@
     <?php
       $users = find_user_by_wedding_id($wedding['id']);
       while ($user = mysqli_fetch_assoc($users)): ?>
-        <p>Username: <?= $user['username']; ?></p>
-        <a href="delete_user.php?user_id=<?= $user['id']; ?>"><p>Delete User</p></a>
+        <div class="user-container">
+          <p class="width30">Username: <?= $user['username']; ?></p>
+          <a class="width30" href="delete_user.php?user_id=<?= $user['id']; ?>"><p>Delete User</p></a>
+        </div>
       <?php endwhile ?>
     <table>
       <tr>
