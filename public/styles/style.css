@@ -22,8 +22,24 @@ input[type=submit]{
   background-color: white;
 }
 
+input[type=number]{
+  width: 50px;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.food-choice-container p {
+  display: inline-block;
+  width: 70%;
+  text-align: left;
+}
+
 .inline-block {
   display: inline;
+}
+
+.float-left {
+  float: left;
 }
 
 .width30 {
@@ -76,6 +92,21 @@ input[type=checkbox] {
   display: inline-block;
 }
 
+.radio-container {
+  height: 50px;
+  width: 48%;
+  display: inline-block;
+}
+
+.radio-container p {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  bottom: 38px;
+  left: 30px;
+}
+
 button {
   margin-top: 10px;
 }
@@ -84,10 +115,17 @@ table, th, td {
   border: 1px solid black;
 }
 
+ul {
+  list-style: none;
+}
+
 #username {
   margin-top: 10%;
 }
 
+#food {
+  margin-top: 20px;
+}
 @media screen (min-width: 600px) {
   .logo {
     width: 45%;

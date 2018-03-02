@@ -33,3 +33,10 @@ CREATE TABLE users (
   admin TINYINT(1),
   PRIMARY KEY (id)
 );
+
+CREATE TABLE food_choices (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  wedding_id INT(11),
+  name VARCHAR(255),
+  PRIMARY KEY (id)
+);

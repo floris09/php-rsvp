@@ -4,6 +4,7 @@ $successMessage = '';
 $user = $_SESSION['user'];
 
 $wedding_id = $user['wedding_id'] ?? null;
+$food_choices = find_children('food_choices', 'wedding_id', $wedding_id);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = test_input($_POST['name']) ?? null;
@@ -28,12 +29,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $adults_count = count($adults_array);
   $children_count = count($children_array);
+  $guest_choices = '';
+
+  if(isset($food_choices)){
+    while ($choice = mysqli_fetch_assoc($food_choices)){
+      $guest_choices .= test_input($_POST[$choice['id']]) ." ". $choice['name'] .". ";
+    }
+  }
 
   $sql = "INSERT INTO guests ";
   $sql .= " (name, attending, adults, children, adults_count,";
-  $sql .= "  children_count, wedding_id) VALUES (";
+  $sql .= "  children_count, wedding_id, food_choices) VALUES (";
   $sql .= " '$name', '$attending', '$adults', '$children', ";
-  $sql .= " '$adults_count', '$children_count', '$wedding_id'";
+  $sql .= " '$adults_count', '$children_count', '$wedding_id', '$guest_choices'";
   $sql .= " ) ";
 
   if (!isset($name)){
@@ -63,15 +71,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type='text' id='name' name='name' placeholder='Name as written on invitation...'><br>
 
     <div class="attending-container">
-      <label for="attending">I'm attending the wedding</label>
-      <input type='hidden' name='attending' value=0>
-      <input type='checkbox' id='attending' name='attending' value=1>
+      <div class="radio-container">
+        <input type='radio' id='attending' name='attending' value=1 checked><p id='att'>Attending</p>
+      </div>
+      <div class="radio-container">
+        <input type='radio' id='attending' name='attending' value=0> <p>Not attending</p>
+      </div>
     </div>
 
     <input type='text' id='adults' name='adults' placeholder='Full names of all the adult guests that will be attending...'>
 
-
     <input type='text' id='children' name='children' placeholder='Full names of all the children that will be attending...'>
+
+      <?php
+        if(isset($food_choices)):
+          echo "<p id='food'>Please choose your desired food by entering a number:</p>";
+          while ($choice = mysqli_fetch_assoc($food_choices)): ?>
+            <div class="food-choice-container">
+              <input type='number' name="<?= $choice['id']; ?>">
+              <p><?= $choice['name']; ?>
+            </div>
+          <?php endwhile ?>
+        <?php endif ?>
 
     <input type='submit' value='submit'>
 

@@ -19,11 +19,11 @@
     return $result;
   }
 
-  function find_user_by_wedding_id($wedding_id) {
+  function find_children($child_table, $foreign_key, $foreign_key_id) {
     global $db;
 
-    $sql = "SELECT * FROM users ";
-    $sql .= "WHERE wedding_id='$wedding_id'";
+    $sql = "SELECT * FROM $child_table ";
+    $sql .= "WHERE $foreign_key=$foreign_key_id";
     $result = mysqli_query($db, $sql);
     confirm_result_set($result);
     return $result;
@@ -65,6 +65,24 @@
     }
   }
 
+  function create_food_choice($name, $wedding_id) {
+    global $db;
+
+    $sql = "INSERT INTO food_choices ";
+    $sql .= " (name, wedding_id) VALUES (";
+    $sql .= " '$name', '$wedding_id' ";
+    $sql .= " ) ";
+
+    $result = mysqli_query($db, $sql);
+    if ($result) {
+      echo "Food choice successfully created.";
+    } else {
+      echo mysqli_error($db) . ". Please try again.";
+      db_disconnect($db);
+      exit;
+    }
+  }
+
   function find_wedding_guests($wedding_id) {
     global $db;
 
@@ -90,11 +108,11 @@
     }
   }
 
-  function delete_children($child_table, $foreign_key, $parent_table_id){
+  function delete_children($child_table, $foreign_key, $foreign_key_id){
     global $db;
 
     $sql = "DELETE FROM $child_table ";
-    $sql .= "WHERE $foreign_key=$parent_table_id";
+    $sql .= "WHERE $foreign_key=$foreign_key_id";
 
     $result = mysqli_query($db, $sql);
     if ($result) {
