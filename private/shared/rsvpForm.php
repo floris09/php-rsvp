@@ -68,31 +68,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <p><?= $successMessage; ?></p>
   <form method='post' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-    <input type='text' id='name' name='name' placeholder='Name as written on invitation...'><br>
+    <input type='text' id='name' name='name' placeholder='Name as written on invitation...    e.g. John Doe'><br>
 
     <div class="attending-container">
       <div class="radio-container">
-        <input type='radio' id='attending' name='attending' value=1 checked><p id='att'>Attending</p>
+        <div class="radiobutton">
+          <input type='radio' id='attending' name='attending' value=1 checked>
+        </div>
+        <p id='att'>Attending</p>
       </div>
       <div class="radio-container">
-        <input type='radio' id='attending' name='attending' value=0> <p>Not attending</p>
+        <div class="radiobutton">
+          <input type='radio' id='attending' name='attending' value=0>
+        </div>
+        <p>Not attending</p>
       </div>
     </div>
 
-    <input type='text' id='adults' name='adults' placeholder='Full names of all the adult guests that will be attending...'>
+    <input type='text' id='adults' name='adults' placeholder='Full names of adult guests that will be attending...    e.g. John Doe, Emma Doe'>
 
-    <input type='text' id='children' name='children' placeholder='Full names of all the children that will be attending...'>
+    <input type='text' id='children' name='children' placeholder='Full names of all the children that will be attending...    e.g. Karl Doe'>
 
-      <?php
-        if(isset($food_choices)):
-          echo "<p id='food'>Please choose your desired food by entering a number:</p>";
-          while ($choice = mysqli_fetch_assoc($food_choices)): ?>
-            <div class="food-choice-container">
-              <input type='number' name="<?= $choice['id']; ?>">
-              <p><?= $choice['name']; ?>
+    <?php
+      while ($choice = mysqli_fetch_assoc($food_choices)){
+          $food[] = $choice;
+      }
+      if(count($food) > 0):
+        echo "<p id='food'>Please choose your desired dish(es) and enter an amount:</p>";
+        foreach ($food as $choice): ?>
+          <div class="food-choice-container">
+            <div class="number">
+              <input type='number' placeholder='0' name="<?= $choice['id']; ?>">
             </div>
-          <?php endwhile ?>
-        <?php endif ?>
+            <p><?= $choice['name']; ?></p>
+          </div>
+        <?php endforeach ?>
+      <?php endif ?>
 
     <input type='submit' value='submit'>
 
