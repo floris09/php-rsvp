@@ -111,7 +111,7 @@ input[type=checkbox] {
   position: relative;
   text-align: left;
   bottom: 38px;
-  left: 30px;
+  left: 60px;
 }
 
 button {
@@ -132,17 +132,4 @@ ul {
 
 #food {
   margin-top: 20px;
-}
-@media screen (min-width: 600px) {
-  .logo {
-    width: 45%;
-  }
-
-  input {
-    width: 60%;
-  }
-
-  input[type=submit]{
-    width: 30%;
-  }
 }

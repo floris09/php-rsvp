@@ -1,0 +1,29 @@
+.logo {
+  width: 30%;
+  margin-top: 50px;
+}
+
+input {
+  display: block;
+  width: 40%;
+}
+
+input[type=submit]{
+  display: block;
+  width: 10%;
+}
+
+.radio-container {
+  height: 50px;
+  width: 28%;
+  display: inline-block;
+}
+
+.radio-container p {
+  width: 200px;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+  bottom: 38px;
+  left: 80px;
+}
