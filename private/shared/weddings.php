@@ -16,7 +16,7 @@
 
   <div class="wedding-header">
     <h2 class="width70"><?= "{$wedding['name']} | {$wedding['date']} | {$wedding['location']}"; ?></h2>
-    <a class="width30" href='delete_wedding.php?wedding_id=<?= $wedding['id'] ?>'><p>Delete Wedding</p></a>
+    <a class="width30 warning" href='delete_wedding.php?wedding_id=<?= $wedding['id'] ?>'><p>Delete Wedding</p></a>
   </div>
 
   <ul>
@@ -29,7 +29,7 @@
   </ul>
 
     <a href='create_user.php?wedding_id=<?= $wedding['id']?>'>
-      <button>Create User</button>
+      <button class='create'>Create User</button>
     </a>
 
     <?php
@@ -37,7 +37,7 @@
       while ($user = mysqli_fetch_assoc($users)): ?>
         <div class="user-container">
           <p class="width30">Username: <?= $user['username']; ?></p>
-          <a class="width30" href="delete_user.php?user_id=<?= $user['id']; ?>"><p>Delete User</p></a>
+          <a class="width30 warning" href="delete_user.php?user_id=<?= $user['id']; ?>"><p>Delete User</p></a>
         </div>
       <?php endwhile ?>
     <table>
@@ -57,7 +57,7 @@
     while ($guest = mysqli_fetch_assoc($guests)): ?>
 
       <tr>
-        <td><a href="delete_guest.php?guest_id=<?= $guest['id']?>"><strong>X</strong></a></td>
+        <td><a class='warning' href="delete_guest.php?guest_id=<?= $guest['id']?>"><strong>X</strong></a></td>
         <td><?= $guest['name'] ?></td>
         <td><?php if($guest['attending']==0){
                     echo 'No';

@@ -54,6 +54,13 @@ input[type=number]{
   width: 70%;
 }
 
+.warning {
+  color: red;
+}
+
+.create {
+  background-color: lightgreen;
+}
 
 .error {
   margin-top: 20px;
