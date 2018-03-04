@@ -75,6 +75,8 @@ input[type=number]{
 
 .create {
   background-color: lightgreen;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .error {
@@ -137,6 +139,11 @@ button {
 
 table, th, td {
   border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  margin-top: 10px;
 }
 
 ul {
@@ -149,4 +156,126 @@ ul {
 
 #food {
   margin-top: 20px;
+}
+
+/* ----------  BLUE TABLE ----------------- */
+
+table.blueTable {
+  font-family: Verdana, Geneva, sans-serif;
+  border: 2px solid #000000;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 2px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+}
+table.blueTable tfoot .links {
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+/* ---------------  BLACK TABLE ------------------- */
+
+table.blackTable {
+  font-family: Verdana, Geneva, sans-serif;
+  border: 2px solid #000000;
+  background-color: #EEEEEE;
+  height: px;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blackTable td, table.blackTable th {
+  border: 1px solid #AAAAAA;
+  padding: 2px 2px;
+}
+table.blackTable tbody td {
+  font-size: 13px;
+}
+table.blackTable tr:nth-child(even) {
+  background: #F5D8D8;
+}
+table.blackTable thead {
+  background: #000000;
+  background: -moz-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+  background: -webkit-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+  background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blackTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #F5F5F5;
+}
+table.blackTable thead th:first-child {
+  border-left: none;
+}
+
+table.blackTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blackTable tfoot td {
+  font-size: 14px;
+}
+table.blackTable tfoot .links {
+  text-align: right;
+}
+table.blackTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
 }

@@ -24,7 +24,7 @@
     $food_choices = find_children('food_choices','wedding_id',$wedding['id']);
 
     while($choice = mysqli_fetch_assoc($food_choices)): ?>
-      <li><?= $choice['name'] ?></li>
+      <li style="display: inline;"><?= $choice['name'] ?>  |  </li>
     <?php endwhile ?>
   </ul>
 
@@ -32,25 +32,42 @@
       <button class='create'>Create User</button>
     </a>
 
-    <?php
-      $users = find_children('users','wedding_id',$wedding['id']);
-      while ($user = mysqli_fetch_assoc($users)): ?>
-        <div class="user-container">
-          <p class="width30">Username: <?= $user['username']; ?></p>
-          <a class="width30 warning" href="delete_user.php?user_id=<?= $user['id']; ?>"><p>Delete User</p></a>
-        </div>
-      <?php endwhile ?>
-    <table>
-      <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Attending</th>
-        <th>Adults</th>
-        <th>Children</th>
-        <th>Food</th>
-        <th>Total Adults</th>
-        <th>Total Children</th>
-      </tr>
+    <table class="blackTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <?php
+          $users = find_children('users','wedding_id',$wedding['id']);
+          while ($user = mysqli_fetch_assoc($users)): ?>
+            <tr>
+              <td><a class="warning" href="delete_user.php?user_id=<?= $user['id']; ?>"><b>X</b></a></td>
+              <td><?= $user['username']; ?></td>
+            </tr>
+        <?php endwhile ?>
+
+      </tbody>
+    </table>
+
+
+    <table class="blueTable">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Attending</th>
+          <th>Adults</th>
+          <th>Children</th>
+          <th>Food</th>
+          <th>Total Adults</th>
+          <th>Total Children</th>
+        </tr>
+      </thead>
+      <tbody>
 
     <?php $guests= find_children('guests','wedding_id',$wedding['id']);
 
@@ -77,6 +94,7 @@
 
     <?php endwhile ?>
 
+      </tbody>
     </table>
 
     <p><strong>Total Adults:</strong> <?= $adultsCount; ?>. <strong>Total Children:</strong> <?= $childrenCount; ?></p>
