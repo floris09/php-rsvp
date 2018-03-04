@@ -1,7 +1,6 @@
 <?php
 $errorMessage = ''; $successMessage = '';
 $id = ((int)$_GET['wedding_id']) ?? '';
-echo $id;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $food_choices = test_input($_POST['food_choices']);
