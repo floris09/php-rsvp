@@ -25,4 +25,5 @@ if (isset($_GET['logout'])) {
 
 <?php
   db_disconnect($db);
+  ob_end_flush();
 ?>

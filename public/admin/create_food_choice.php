@@ -17,8 +17,8 @@ if (isset($_GET['logout'])) {
 <body>
 
 <a href='index.php?logout=true'><p>LOGOUT</p></a>
-<a href='create_wedding.php'><button class='create'>Create Wedding</button></a>
-<?php include(SHARED_PATH . '/weddings.php'); ?>
+
+<?php include(SHARED_PATH . '/foodChoiceForm.php'); ?>
 
 </body>
 </html>

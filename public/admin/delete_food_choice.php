@@ -3,12 +3,12 @@
 $user = $_SESSION['user'];
 
 if ($user['admin'] != 1){
-  header('Location: ../index.php');
+  header('Location: ../rsvp.php');
 } else {
 
-$id = htmlspecialchars((int)$_GET['user_id']);
+$id = htmlspecialchars((int)$_GET['choice_id']);
 
-delete_item('users', $id);
+delete_item('food_choices', $id);
 header("Location: ./index.php ");
 }
 ob_end_flush();

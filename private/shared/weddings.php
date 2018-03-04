@@ -19,20 +19,37 @@
     <a class="width30 warning" href='delete_wedding.php?wedding_id=<?= $wedding['id'] ?>'><p>Delete Wedding</p></a>
   </div>
 
-  <ul>
+  <a href='create_user.php?wedding_id=<?= $wedding['id']?>'>
+    <button class='create'>Create User</button>
+  </a>
+
+  <a href='create_food_choice.php?wedding_id=<?= $wedding['id']?>'>
+    <button class='create'>Create Food Option</button>
+  </a>
+
+  <table class="blackTable inline-block">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Food Option</th>
+      </tr>
+    </thead>
+    <tbody>
+
   <?php
     $food_choices = find_children('food_choices','wedding_id',$wedding['id']);
 
     while($choice = mysqli_fetch_assoc($food_choices)): ?>
-      <li style="display: inline;"><?= $choice['name'] ?>  |  </li>
+      <tr>
+        <td><a class="warning" href="delete_food_choice.php?choice_id=<?= $choice['id']; ?>"><b>X</b></a></td>
+        <td><?= $choice['name'] ?></td>
+      </tr>
     <?php endwhile ?>
-  </ul>
 
-    <a href='create_user.php?wedding_id=<?= $wedding['id']?>'>
-      <button class='create'>Create User</button>
-    </a>
+    </tbody>
+  </table>
 
-    <table class="blackTable">
+    <table class="blackTable inline-block">
       <thead>
         <tr>
           <th></th>

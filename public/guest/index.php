@@ -17,4 +17,5 @@ if (!isset($_SESSION['user'])){
 
 <?php
   db_disconnect($db);
+  ob_end_flush();
 ?>
