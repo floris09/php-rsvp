@@ -79,9 +79,13 @@
           <th>Attending</th>
           <th>Adults</th>
           <th>Children</th>
+          <th>Arrival Flight</th>
+          <th>Arrival Date</th>
+          <th>Departure Flight</th>
+          <th>Departure Date</th>
           <th>Food</th>
-          <th>Total Adults</th>
-          <th>Total Children</th>
+          <th>Adults</th>
+          <th>Children</th>
         </tr>
       </thead>
       <tbody>
@@ -101,6 +105,10 @@
         </td>
         <td><?= $guest['adults'] ?></td>
         <td><?= $guest['children'] ?></td>
+        <td><?= $guest['arrival_flight'] ?></td>
+        <td><?= $guest['arrival_date'] ?></td>
+        <td><?= $guest['departure_flight'] ?></td>
+        <td><?= $guest['departure_date'] ?></td>
         <td><?= $guest['food_choices'] ?></td>
         <td><?= $guest['adults_count'] ?></td>
         <td><?= $guest['children_count'] ?></td>

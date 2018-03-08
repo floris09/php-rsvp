@@ -16,6 +16,12 @@ input {
   margin-bottom: 10px;
 }
 
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: -10px;
+}
+
 input[type=submit]{
   width: 50%;
   border: 2px solid black;
@@ -115,6 +121,7 @@ input[type=checkbox] {
   height: 50px;
   width: 49%;
   display: inline-block;
+  padding-left: 20px;
 }
 
 .radio-container p {

@@ -3,14 +3,18 @@ $errorMessage = '';
 $successMessage = '';
 $user = $_SESSION['user'];
 
-$wedding_id = $user['wedding_id'] ?? null;
+$wedding_id = $user['wedding_id'] ? $user['wedding_id'] : null;
 $food_choices = find_children('food_choices', 'wedding_id', $wedding_id);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = test_input($_POST['name']) ?? null;
-  $attending = test_input($_POST['attending']) ?? null;
-  $adults = test_input($_POST['adults']) ?? null;
-  $children = test_input($_POST['children']) ?? null;
+  $name = test_input($_POST['name']) ? test_input($_POST['name']) : null;
+  $attending = test_input($_POST['attending']) ? test_input($_POST['attending']) : null;
+  $adults = test_input($_POST['adults']) ? test_input($_POST['adults']) : null;
+  $children = test_input($_POST['children']) ? test_input($_POST['children']) : null;
+  $arrival_flight = test_input($_POST['arrival_flight']) ? test_input($_POST['arrival_flight']) : null;
+  $arrival_date = test_input($_POST['arrival_date']) ? test_input($_POST['arrival_date']) : null;
+  $departure_flight = test_input($_POST['departure_flight']) ? test_input($_POST['departure_flight']) : null;
+  $departure_date = test_input($_POST['departure_date']) ? test_input($_POST['departure_date']) : null;
 
   $adults_array = explode(",", $adults);
   $children_array = explode(",", $children);
@@ -39,9 +43,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $sql = "INSERT INTO guests ";
   $sql .= " (name, attending, adults, children, adults_count,";
-  $sql .= "  children_count, wedding_id, food_choices) VALUES (";
+  $sql .= "  children_count, wedding_id, food_choices, arrival_flight,";
+  $sql .= "  arrival_date, departure_flight, departure_date) VALUES (";
   $sql .= " '$name', '$attending', '$adults', '$children', ";
-  $sql .= " '$adults_count', '$children_count', '$wedding_id', '$guest_choices'";
+  $sql .= " '$adults_count', '$children_count', '$wedding_id', '$guest_choices',";
+  $sql .= " '$arrival_flight', '$arrival_date', '$departure_flight', '$departure_date'";
   $sql .= " ) ";
 
   if (!isset($name)){
@@ -52,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $result = mysqli_query($db, $sql);
     if ($result) {
-      $successMessage = "Thank you, your form has been submitted.";
+      header("Location: ./success.php");
     } else {
       echo mysqli_error($db) . ". Please try again.";
       db_disconnect($db);
@@ -88,6 +94,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type='text' id='adults' name='adults' placeholder='Full names of adult guests that will be attending...    e.g. John Doe, Emma Doe'>
 
     <input type='text' id='children' name='children' placeholder='Full names of all the children that will be attending...    e.g. Karl Doe'>
+
+    <input type='text' name='arrival_flight' placeholder='Arrival flight number...    e.g. EK557'>
+
+    <label for="arrival_date">Date of Arrival</label>
+    <input type='date' name='arrival_date'>
+
+    <input type='text' name='departure_flight' placeholder='Departure flight number...    e.g. EK437'>
+
+    <label for="departure_date">Date of Departure</label>
+    <input type='date' name='departure_date'>
 
     <?php
       while ($choice = mysqli_fetch_assoc($food_choices)){
